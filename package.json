@@ -1,0 +1,27 @@
+{
+  "name": "plan-vault-hypercore",
+  "version": "0.1.0",
+  "description": "TODO",
+  "license": "GPL-3.0-only",
+  "homepage": "https://plan-systems.org",
+  "bin": {
+    "plan-vault-hypercore": "./main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plan-systems/plan-vault-hypercore"
+  },
+  "dependencies": {
+    "@grpc/proto-loader": "^0.1.0",
+    "async": "^1.5.2",
+    "google-protobuf": "^3.0.0",
+    "grpc": "^1.11.0",
+    "hypercore": "^9.5.4",
+    "lodash": "^4.6.1",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "grpc-tools": "^1.9.1"
+  }
+}

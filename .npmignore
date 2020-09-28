@@ -1,0 +1,6 @@
+.gitmodules
+docs
+Makefile
+node_modules
+test
+tools
