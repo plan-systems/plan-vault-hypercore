@@ -3,13 +3,14 @@
 const assert = require('assert').strict;
 const async = require('async');
 
-const messages = require('../vault_pb');
+const messages = require('../lib/vault_pb');
 const t = require('./helpers');
 
 const ErrOpCodeForOpen = 'wrong opcode returned for OPENFEED';
 const ErrOpCodeForAppend = 'wrong opcode returned for APPENDENTRY';
 const ErrOpCodeForClose = 'wrong opcode returned for CLOSEFEED';
 const ErrOpCodeForRead = 'wrong opcode returned for RECVENTRY';
+
 
 // Exercise genesis block creation and re-opening a closed feed.
 async function runTestGenesis(callback) {
@@ -18,7 +19,7 @@ async function runTestGenesis(callback) {
 
   let feedID = 7;
   let feedUri = './data/_testGenesis';
-  var reqID = 0;
+  var reqID = 7;
 
   try {
     // 1. open new feed with genesis block
@@ -70,7 +71,7 @@ async function runTestReopenWithSeek(callback) {
 
   let feedID = 8;
   let feedUri = './data/_testReopenWithSeek';
-  var reqID = 0;
+  var reqID = 1;
 
   try {
     // 1. open new feed
@@ -135,7 +136,7 @@ async function runTestFeedTailing(callback) {
   let feedID = 9;
   let feedUri = './data/_testFeedTailing';
 
-  var reqID = 0;
+  var reqID = 1;
 
   try {
     // 1. open new feed
@@ -178,26 +179,12 @@ async function runTestFeedTailing(callback) {
   }
 }
 
-// 1. open feed and immediately write to it without waiting
-// 2. double-close feeds
-// async function runTestBuggyClient(callback) {
-//   let client = t.newClient();
-//   let call = client.feedService();
-
-//   let feedID = 10;
-//   let feedUri = './data/_testBuggyClient';
-
-//   t.cleanup(client, call, feedID);
-//   callback(null, 'PASS');
-// }
-
 
 function main() {
   async.series([
     runTestGenesis,
     runTestReopenWithSeek,
     runTestFeedTailing,
-    // runTestBuggyClient,
   ], function (err, results) {
     if (err !== null) {
       console.log('error: %s\nexpected: %s got %s\n%s',

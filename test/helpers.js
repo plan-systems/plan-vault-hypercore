@@ -5,15 +5,16 @@ const assert = require('assert').strict;
 
 const grpc = require('grpc');
 
-const messages = require('../vault_pb');
-const services = require('../vault_grpc_pb');
+const messages = require('../lib/vault_pb');
+const services = require('../lib/vault_grpc_pb');
 
 
 // newClient handles the gRPC responses coming back and pushes them
 // onto an array for the tests to inspect
 function newClient() {
-  let client = new services.VaultGrpcClient('localhost:50051',
-                                            grpc.credentials.createInsecure());
+  let client = new services.VaultGrpcClient(
+    'localhost:50051',
+    grpc.credentials.createInsecure());
   return client;
 }
 
