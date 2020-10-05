@@ -2,19 +2,22 @@
 
 const grpc = require('grpc');
 
+const messages = require('./lib/vault_pb');
 const services = require('./lib/vault_grpc_pb');
+
 const { feedService } = require('./lib/service');
+
 
 function getServer() {
   var server = new grpc.Server();
   server.addService(services.VaultGrpcService, {
-    feedService: feedService,
+    feedServicePipe: feedService,
   });
   return server;
 }
 
 // TODO: make this configurable
-var bindOnAddr = '0.0.0.0:50051';
+var bindOnAddr = '0.0.0.0:'+messages.Const.DEFAULTGRPCSERVICEPORT;
 
 function main() {
   var server = getServer();

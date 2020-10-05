@@ -13,7 +13,7 @@ deps:
 	npm install
 
 .PHONY: protos
-protos: lib/vault_grpc_pb.js
+protos: lib/vault_grpc_pb.js lib/vault_pb.js lib/vault.proto
 
 # TODO: this is temporary until the proto definition settles down a
 # bit, at which point we can git submodule the protobufs repo
@@ -24,7 +24,7 @@ proto-sync:
 lib/vault_pb.js: lib/vault.proto
 
 # TODO: move this into a package.json script?
-vault_grpc_pb.js: vault.proto
+lib/vault_grpc_pb.js: lib/vault.proto
 	./node_modules/grpc-tools/bin/protoc \
 		--js_out=import_style=commonjs,binary:../plan-vault-hypercore \
 		--grpc_out=../plan-vault-hypercore \

@@ -13,7 +13,7 @@ const services = require('../lib/vault_grpc_pb');
 // onto an array for the tests to inspect
 function newClient() {
   let client = new services.VaultGrpcClient(
-    'localhost:50051',
+    'localhost:'+messages.Const.DEFAULTGRPCSERVICEPORT,
     grpc.credentials.createInsecure());
   return client;
 }
@@ -59,7 +59,7 @@ async function open(call, feedID, feedUri, reqID, cfg, genesisData) {
 async function close(call, feedID, reqID) {
   let closeMsg = new messages.FeedMsg();
   closeMsg.setFeedid(feedID);
-  closeMsg.setMsgop(messages.FeedMsgOp.CLOSEFEED);
+  closeMsg.setMsgop(messages.FeedMsgOp.CANCELREQ);
   closeMsg.setReqid(reqID);
   return await send(call, closeMsg);
 }
@@ -90,9 +90,6 @@ function _poll(call, event, msg) {
       resolve(val);
     };
     const fail = (err) => {
-      console.log('--------------------------');
-      console.log(err);
-      console.log('--------------------------');
       call.off(event, success);
       clearTimeout(timeout);
       reject(err);

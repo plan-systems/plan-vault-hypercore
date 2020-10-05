@@ -15,7 +15,7 @@ const ErrOpCodeForRead = 'wrong opcode returned for RECVENTRY';
 // Exercise genesis block creation and re-opening a closed feed.
 async function runTestGenesis(callback) {
   let client = t.newClient();
-  let call = client.feedService();
+  let call = client.feedServicePipe();
 
   let feedID = 7;
   let feedUri = './data/_testGenesis';
@@ -67,7 +67,7 @@ async function runTestGenesis(callback) {
 // Exercise reopening a feed and seeking to a specific ID
 async function runTestReopenWithSeek(callback) {
   let client = t.newClient();
-  let call = client.feedService();
+  let call = client.feedServicePipe();
 
   let feedID = 8;
   let feedUri = './data/_testReopenWithSeek';
@@ -128,10 +128,10 @@ async function runTestReopenWithSeek(callback) {
 // 2. write 2 entries in 1st client, verify they show up in 2nd client
 async function runTestFeedTailing(callback) {
   let client1 = t.newClient();
-  let call1 = client1.feedService();
+  let call1 = client1.feedServicePipe();
 
   let client2 = t.newClient();
-  let call2 = client2.feedService();
+  let call2 = client2.feedServicePipe();
 
   let feedID = 9;
   let feedUri = './data/_testFeedTailing';
