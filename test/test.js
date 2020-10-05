@@ -180,18 +180,16 @@ async function runTestFeedTailing(callback) {
 }
 
 
-function main() {
-  async.series([
-    runTestGenesis,
-    runTestReopenWithSeek,
-    runTestFeedTailing,
-  ], function (err, results) {
-    if (err !== null) {
-      console.log('error: %s\nexpected: %s got %s\n%s',
-                  err.message, err.expected, err.actual, err.stack);
-    }
-    console.log('results: %s', results);
-  });
-}
-
-main();
+async.series([
+  runTestGenesis,
+  runTestReopenWithSeek,
+  runTestFeedTailing,
+], function (err, results) {
+  if (err !== null) {
+    console.log('error: %s\nexpected: %s got %s\n%s',
+                err.message, err.expected, err.actual, err.stack);
+    process.exit(1);
+  }
+  console.log('results: %s', results);
+  process.exit(0);
+});
