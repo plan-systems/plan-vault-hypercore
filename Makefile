@@ -41,7 +41,7 @@ run:
 
 .PHONY: check
 check:
-	node_modules/eslint/bin/eslint.js main.js lib/feed.js lib/service.js test/*.js
+	node_modules/eslint/bin/eslint.js main.js lib/feeds.js lib/service.js lib/streams.js test/*.js
 
 .PHONY: test
 test: clean

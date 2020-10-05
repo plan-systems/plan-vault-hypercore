@@ -71,7 +71,7 @@ async function runTestReopenWithSeek(callback) {
 
   let feedID = 8;
   let feedUri = './data/_testReopenWithSeek';
-  var reqID = 1;
+  var reqID = 8;
 
   try {
     // 1. open new feed
@@ -136,7 +136,7 @@ async function runTestFeedTailing(callback) {
   let feedID = 9;
   let feedUri = './data/_testFeedTailing';
 
-  var reqID = 1;
+  var reqID = 9;
 
   try {
     // 1. open new feed

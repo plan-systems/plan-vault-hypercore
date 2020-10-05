@@ -90,6 +90,9 @@ function _poll(call, event, msg) {
       resolve(val);
     };
     const fail = (err) => {
+      console.log('--------------------------');
+      console.log(err);
+      console.log('--------------------------');
       call.off(event, success);
       clearTimeout(timeout);
       reject(err);
