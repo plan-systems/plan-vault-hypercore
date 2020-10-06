@@ -2,6 +2,7 @@
 
 const assert = require('assert').strict;
 const async = require('async');
+const process = require('process');
 
 const messages = require('../lib/vault_pb');
 const t = require('./helpers');
