@@ -2,8 +2,8 @@
 
 const Buffer = require('buffer').Buffer;
 const assert = require('assert').strict;
-
 const grpc = require('grpc');
+const process = require('process');
 
 const messages = require('../lib/vault_pb');
 const services = require('../lib/vault_grpc_pb');
