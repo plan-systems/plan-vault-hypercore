@@ -19,7 +19,7 @@ async function runTestGenesis(callback) {
   let call = client.feedServicePipe();
 
   let feedID = 7;
-  let feedUri = './data/_testGenesis';
+  let feedUri = '_testGenesis';
   var reqID = 7;
 
   try {
@@ -71,7 +71,7 @@ async function runTestReopenWithSeek(callback) {
   let call = client.feedServicePipe();
 
   let feedID = 8;
-  let feedUri = './data/_testReopenWithSeek';
+  let feedUri = '_testReopenWithSeek';
   var reqID = 8;
 
   try {
@@ -135,7 +135,7 @@ async function runTestFeedTailing(callback) {
   let call2 = client2.feedServicePipe();
 
   let feedID = 9;
-  let feedUri = './data/_testFeedTailing';
+  let feedUri = '_testFeedTailing';
 
   var reqID = 9;
 
