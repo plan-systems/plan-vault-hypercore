@@ -1,12 +1,15 @@
 # plan-vault-hypercore
 
-_An implementation of the PLAN storage layer_
+_An implementation of the PLAN storage layer__
 
 ### Development status
 
-Pre-alpha prototyping underway. The only thing that's known to work is
-that which is covered by tests. Not yet wired up for p2p, lots of
-validation bugs, and things like crashes if you close a feed
+This route was abandoned in lieu of using libp2p as the initial vault
+implementation.
+
+Pre-alpha prototyping was underway. The only thing that's known to
+work is that which is covered by tests. Not yet wired up for p2p, lots
+of validation bugs, and things like crashes if you close a feed
 twice. See `TODO`s in the code for details; as the prototype
 solidifies this repo will use GitHub issues to track progress.
 
